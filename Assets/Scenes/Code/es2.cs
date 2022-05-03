@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class es2 : MonoBehaviour
 {
-    public GameObject Cube;
+    public GameObject Sphere;
     private GameObject[] objs;
     public int numberOfClone = 10;
     public float fading = 0.1F;
@@ -15,7 +15,7 @@ public class es2 : MonoBehaviour
         objs = new GameObject[numberOfClone];
         for(int i = 0; i<numberOfClone; i++)
         {
-            objs[i] = (GameObject)Instantiate(Cube, new Vector3(Random.value, Random.value, Random.value)*5, new Quaternion());
+            objs[i] = (GameObject)Instantiate(Sphere, new Vector3(Random.value, Random.value, Random.value)*5, new Quaternion());
         }
     }
 

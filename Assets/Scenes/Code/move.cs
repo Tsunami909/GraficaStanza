@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
-    public int moveSpeed = 10;
+    public int moveSpeed = 100;
     public float forceAmount = 1.0f;
+    public GameObject Parete4;
     public Rigidbody rb;
 
     void Start()
@@ -14,7 +15,7 @@ public class move : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+       /* if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
@@ -31,27 +32,35 @@ public class move : MonoBehaviour
         
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        }
+            transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+        }*/
 
-        if(Input.GetKeyDown("a"))
+        if(Input.GetKey(KeyCode.A))
         {
             rb.AddForce(Vector3.left * forceAmount, ForceMode.Impulse);
         }
 
-        if(Input.GetKeyDown("d"))
+        if(Input.GetKey(KeyCode.D))
         {
             rb.AddForce(Vector3.right * forceAmount, ForceMode.Impulse);
         }
 
-        if(Input.GetKeyDown("w"))
+        if(Input.GetKey(KeyCode.W))
         {
             rb.AddForce(Vector3.forward * forceAmount, ForceMode.Impulse);
         }
         
-        if(Input.GetKeyDown("s"))
+        if(Input.GetKey(KeyCode.S))
         {
             rb.AddForce(Vector3.back * forceAmount, ForceMode.Impulse);
         }
+    }
+}
+
+void private OnCollisionEnter(Collision collision)
+{
+    if(collision.gameObject == Parete4)
+    {
+        GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, Random.value);
     }
 }
